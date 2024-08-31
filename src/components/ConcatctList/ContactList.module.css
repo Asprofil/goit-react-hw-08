@@ -1,0 +1,52 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.contactName {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.contactNumber {
+    font-size: 14px;
+    color: #555;
+}
+
+.deleteButton {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: fit-content;
+}
+
+.deleteButton:hover {
+    background: #c0392b;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+}
