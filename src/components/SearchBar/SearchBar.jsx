@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from '../../redux/filters/slice';
 import { selectFilter } from '../../redux/contacts/slice';
 
-const SearchBox = () => {
+const SearchBar = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
 
@@ -19,4 +19,4 @@ const SearchBox = () => {
   );
 };
 
-export default SearchBox;
+export default SearchBar;
