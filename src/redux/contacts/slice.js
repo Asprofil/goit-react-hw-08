@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations';
-import { logOut } from '../auth/operations'; // Імпорт logOut з операцій аутентифікації
+import { logOut } from '../auth/operations'; // Імпортуйте logOut
 
 const initialState = {
   items: [],
@@ -48,9 +48,25 @@ const contactsSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.items = []; // Очищення контактів під час виходу з системи
+        // Очищення контактів під час виходу
+        state.items = [];
       });
   },
 });
 
 export default contactsSlice.reducer;
+
+// Селектори
+export const selectContacts = (state) => state.contacts.items;
+export const selectLoading = (state) => state.contacts.loading;
+export const selectError = (state) => state.contacts.error;
+export const selectFilter = (state) => state.filters.name;
+
+// Мемоізований селектор для фільтрації контактів
+export const selectFilteredContacts = createSelector(
+  [selectContacts, selectFilter],
+  (contacts, filter) =>
+    contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    )
+);
